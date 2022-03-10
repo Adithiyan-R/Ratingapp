@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:context="http://www.springframework.org/schema/context"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd">
+
+<context:annotation-config/>
+	
+	<bean id="user" class="rating.User">
+		<property name="username" value="John23" />
+		<property name="emailid" value="John23@john.com" />
+		<property name="password" value="password" />
+		<property name="mobilenumber" value="1234567890" />
+	</bean>
+	
+	<bean id="comment1" class="rating.Comment">
+		<property name="comment_id" value="1" />
+		<property name="comment_text" value="not bad" />
+		<property name="likes" value="24" />
+		<property name="dislikes" value="45" />
+		<property name="report" value="true" />
+	</bean>
+	
+	<bean id="comment2" class="rating.Comment">
+		<property name="comment_id" value="2" />
+		<property name="comment_text" value="awesome" />
+		<property name="likes" value="78" />
+		<property name="dislikes" value="14" />
+		<property name="report" value="false" />
+	</bean> 
+
+	<bean id="comment3" class="rating.Comment">
+		<property name="comment_id" value="3" />
+		<property name="comment_text" value="useful" />
+		<property name="likes" value="154" />
+		<property name="dislikes" value="34" />
+		<property name="report" value="false" />
+	</bean> 
+
+	<bean id="review" class="rating.Review">
+	<property name="reviewid" value="11"/>
+	<property name="financialproduct_reviewed" ref="financialproduct"/>
+	<property name="review_text" value="Good! making use of it"/>
+	<property name="comments">
+		<list>
+			<ref bean="comment1"/>
+			<ref bean="comment2"/>
+			<ref bean="comment3"/>
+		</list>
+	</property>
+	</bean>
+	
+	<bean id="financialproduct" class="rating.Financialproduct">	
+		<property name="financial_productid" value="99" />
+		<property name="financial_product_name" value="Automatic vaccum cleaner" />
+		<property name="description" value="Cleans your house while resting" />
+		<property name="rating" value="7" />
+		<property name="review" ref="review" />
+	</bean>
+	
+</beans>
